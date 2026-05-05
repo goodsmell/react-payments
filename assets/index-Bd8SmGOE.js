@@ -94,7 +94,7 @@ Error generating stack: `+e.message+`
               gap: 8px;
             `,children:e}),F(`span`,{css:[zt,P`
                 visibility: ${i?`visible`:`hidden`};
-              `],children:i})]})]})]}),Vt=e=>/^4/.test(e)?`visa`:/^5[1-5]/.test(e)?`master`:``,Ht=({onValueHandler:e})=>{let[t,n]=(0,_.useState)([``,``,``,``]),[r,i]=(0,_.useState)(``),[a,o]=(0,_.useState)(-1),s=(r,a)=>{let o=[...t];o[r]=a,n(o),i(``),e(o)},c=()=>{let e=-1,n=``;for(let r=0;r<t.length;r++){let i=t[r];if(!(i===``||i===void 0)){if(!/^\d+$/.test(i)){e=r,n=`숫자만 입력 가능합니다`;break}if(r===0&&Vt(i)===``){e=r,n=`이 카드 브랜드는 지원하지 않습니다.`;break}}}o(e),i(n)};return F(Bt,{title:`결제할 카드 번호를 입력해 주세요`,message:`본인 명의의 카드만 결제 가능합니다.`,tag:`카드 번호`,errorMessage:r,children:t.map((e,t)=>F(`input`,{maxLength:4,value:e,onChange:e=>s(t,e.target.value),onBlur:c,css:P`
+              `],children:i})]})]})]}),Vt=e=>/^4/.test(e)?`visa`:/^5[1-5]/.test(e)?`master`:``,Ht=e=>{for(let t=0;t<e.length;t++){let n=e[t];if(!(n===``||n===void 0)){if(!/^\d+$/.test(n))return{errorIndex:t,message:`숫자만 입력 가능합니다`};if(t===0&&Vt(n)===``)return{errorIndex:t,message:`이 카드 브랜드는 지원하지 않습니다.`}}}return{errorIndex:-1,message:``}},Ut=e=>{for(let t=0;t<e.length;t++){let n=e[t];if(!(n===``||n===void 0)){if(!/^\d+$/.test(n))return{errorIndex:t,message:`숫자만 입력 가능합니다`};if(t===0&&!/^(0[1-9]|1[0-2])$/.test(n))return{errorIndex:t,message:`유효한 날짜를 입력해주세요`}}}return{errorIndex:-1,message:``}},Wt=e=>e===``||e===void 0||/^\d+$/.test(e)?{errorIndex:-1,message:``}:{errorIndex:0,message:`숫자만 입력 가능합니다`},Gt=({onValueHandler:e})=>{let[t,n]=(0,_.useState)([``,``,``,``]),[r,i]=(0,_.useState)(``),[a,o]=(0,_.useState)(-1),s=(r,a)=>{let o=[...t];o[r]=a,n(o),i(``),e(o)},c=()=>{let{errorIndex:e,message:n}=Ht(t);o(e),i(n)};return F(Bt,{title:`결제할 카드 번호를 입력해 주세요`,message:`본인 명의의 카드만 결제 가능합니다.`,tag:`카드 번호`,errorMessage:r,children:t.map((e,t)=>F(`input`,{maxLength:4,value:e,onChange:e=>s(t,e.target.value),onBlur:c,css:P`
             flex: 1;
             height: 32px;
             border-radius: 2px;
@@ -102,7 +102,7 @@ Error generating stack: `+e.message+`
             border: 1.01px solid ${a===t?`#ff3d3d`:`#ACACAC`};
             padding: 8px;
             box-sizing: border-box;
-          `,placeholder:`1234`},t))})},Ut=({onValueHandler:e})=>{let[t,n]=(0,_.useState)(``),[r,i]=(0,_.useState)(``),a=t=>{i(``),n(t),e(t)};return F(Bt,{title:`CVC번호를 입력해 주세요`,message:``,tag:`CVC`,errorMessage:r,children:F(`input`,{maxLength:3,value:t,onChange:e=>a(e.target.value),onBlur:()=>{t===``||t===void 0||/^\d+$/.test(t)||i(`숫자만 입력 가능합니다`)},css:P`
+          `,placeholder:`1234`},t))})},Kt=({onValueHandler:e})=>{let[t,n]=(0,_.useState)(``),[r,i]=(0,_.useState)(``),a=t=>{i(``),n(t),e(t)};return F(Bt,{title:`CVC번호를 입력해 주세요`,message:``,tag:`CVC`,errorMessage:r,children:F(`input`,{maxLength:3,value:t,onChange:e=>a(e.target.value),onBlur:()=>{let{message:e}=Wt(t);i(e)},css:P`
           flex: 1;
           height: 32px;
           border-radius: 2px;
@@ -110,7 +110,7 @@ Error generating stack: `+e.message+`
           border: 1.01px solid ${r?`#ff3d3d`:`#ACACAC`};
           padding: 8px;
           box-sizing: border-box;
-        `,placeholder:`123`})})},Wt=({onValueHandler:e})=>{let[t,n]=(0,_.useState)([``,``]),[r,i]=(0,_.useState)(``),[a,o]=(0,_.useState)(-1),s=[`MM`,`YY`],c=(r,a)=>{let o=[...t];o[r]=a,n(o),i(``),e(o)},l=()=>{let e=-1,n=``;for(let r=0;r<t.length;r++){let i=t[r];if(!(i===``||i===void 0)){if(!/^\d+$/.test(i)){e=r,n=`숫자만 입력 가능합니다`;break}if(r===0&&!/^(0[1-9]|1[0-2])$/.test(i)){e=r,n=`유효한 날짜를 입력해주세요`;break}}}o(e),i(n)};return F(Bt,{title:`카드 유효기간을 입력해주세요`,message:`월/년도(MMYY)를 순서대로 입력해 주세요.`,tag:`유효기간`,errorMessage:r,children:t.map((e,t)=>F(`input`,{maxLength:2,value:e,onChange:e=>c(t,e.target.value),onBlur:l,css:P`
+        `,placeholder:`123`})})},qt=({onValueHandler:e})=>{let[t,n]=(0,_.useState)([``,``]),[r,i]=(0,_.useState)(``),[a,o]=(0,_.useState)(-1),s=[`MM`,`YY`],c=(r,a)=>{let o=[...t];o[r]=a,n(o),i(``),e(o)},l=()=>{let{errorIndex:e,message:n}=Ut(t);o(e),i(n)};return F(Bt,{title:`카드 유효기간을 입력해주세요`,message:`월/년도(MMYY)를 순서대로 입력해 주세요.`,tag:`유효기간`,errorMessage:r,children:t.map((e,t)=>F(`input`,{maxLength:2,value:e,onChange:e=>c(t,e.target.value),onBlur:l,css:P`
             flex: 1;
             height: 32px;
             border-radius: 2px;
@@ -118,7 +118,7 @@ Error generating stack: `+e.message+`
             border: 1.01px solid ${a===t?`#ff3d3d`:`#ACACAC`};
             padding: 8px;
             box-sizing: border-box;
-          `,placeholder:s[t]},t))})};function Gt(){let[e,t]=(0,_.useState)({numbers:[],expiry:[],cvc:``}),n=Vt(e.numbers[0]??``);return F(`main`,{css:P`
+          `,placeholder:s[t]},t))})};function Jt(){let[e,t]=(0,_.useState)({numbers:[],expiry:[],cvc:``}),n=Vt(e.numbers[0]??``);return F(`main`,{css:P`
         display: flex;
         min-height: 100vh;
         width: 100vw;
@@ -140,4 +140,4 @@ Error generating stack: `+e.message+`
             display: flex;
             flex-direction: column;
             gap: 16px;
-          `,children:[F(Ht,{onValueHandler:e=>{t(t=>({...t,numbers:e}))}}),F(Wt,{onValueHandler:e=>{t(t=>({...t,expiry:e}))}}),F(Ut,{onValueHandler:e=>{t(t=>({...t,cvc:e}))}})]})]})})}(0,v.createRoot)(document.getElementById(`root`)).render(F(_.StrictMode,{children:F(Gt,{})}));
+          `,children:[F(Gt,{onValueHandler:e=>{t(t=>({...t,numbers:e}))}}),F(qt,{onValueHandler:e=>{t(t=>({...t,expiry:e}))}}),F(Kt,{onValueHandler:e=>{t(t=>({...t,cvc:e}))}})]})]})})}(0,v.createRoot)(document.getElementById(`root`)).render(F(_.StrictMode,{children:F(Jt,{})}));
