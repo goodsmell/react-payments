@@ -212,4 +212,4 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           font-weight: 700;
           font-size: 25px;
           text-align: center;
-        `,children:[n[0],`로 시작하는 `,I(`br`,{}),r,` 카드가 등록되었어요.`]}),I(Oa,{onClick:()=>t(`/`),children:`확인`})]})};(0,v.createRoot)(document.getElementById(`root`)).render(I(_.StrictMode,{children:I(()=>I(jn,{children:I(Ut,{children:L(Vt,{element:I(Gi,{}),children:[I(Vt,{path:`/`,element:I(Ea,{})}),I(Vt,{path:`/complete`,element:I(ka,{})})]})})}),{})}));
+        `,children:[n[0],`로 시작하는 `,I(`br`,{}),r,` 카드가 등록되었어요.`]}),I(Oa,{onClick:()=>t(`/`),children:`확인`})]})};(0,v.createRoot)(document.getElementById(`root`)).render(I(_.StrictMode,{children:I(()=>I(jn,{basename:`/react-payments/`,children:I(Ut,{children:L(Vt,{element:I(Gi,{}),children:[I(Vt,{path:`/`,element:I(Ea,{})}),I(Vt,{path:`/complete`,element:I(ka,{})})]})})}),{})}));
