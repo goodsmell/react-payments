@@ -117,7 +117,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
               gap: 8px;
             `,children:e}),L(`span`,{css:[oa,I`
                 visibility: ${i?`visible`:`hidden`};
-              `],children:i})]})]})]}),z={errorIndex:-1,message:``},ca=e=>{let t=e.findIndex(e=>!e);return t===-1?z:{errorIndex:t,message:`카드 번호를 입력해주세요`}},la=e=>{let t=e.findIndex(e=>!e||e.length<2);return t===-1?z:{errorIndex:t,message:`유효기간을 입력해주세요`}},ua=e=>e.length<3?{errorIndex:0,message:`CVC를 입력해주세요`}:z,da=e=>e.length<2?{errorIndex:0,message:`비밀번호를 입력해주세요`}:z,fa=(e,t)=>{let[n,r]=(0,_.useState)(``),[i,a]=(0,_.useState)(-1);return{errorMessage:n,errorIndex:i,clearError:()=>{r(``),a(-1)},handleBlur:()=>{let{errorIndex:n,message:i}=e(t);a(n),r(i)}}},pa=({onChange:e,inputValues:t,fieldConfig:n,serverError:r})=>{let{errorMessage:i,errorIndex:a,clearError:o,handleBlur:s}=fa(ca,t),c=i||r,l=!!c,u=!!r,d=(0,_.useRef)([]),f=(r,i)=>{let a=[...t];a[r]=i.replace(/\D/g,``),o(),e(a),i.length===n[r]&&r<n.length-1&&d.current[r+1]?.focus()};return L(sa,{title:`결제할 카드 번호를 입력해 주세요`,message:`본인 명의의 카드만 결제 가능합니다.`,tag:`카드 번호`,errorMessage:c,children:n.map((e,n)=>{let r=l&&(u||a<0||a===n);return L(`input`,{inputMode:`numeric`,ref:e=>{d.current[n]=e},maxLength:e,value:t[n]??``,onChange:e=>f(n,e.target.value),onBlur:s,css:[aa,I`
+              `],children:i})]})]})]}),z={errorIndex:-1,message:``},ca=(e,t)=>{let n=e.findIndex((e,n)=>!e||e.length<t[n]);return n===-1?z:{errorIndex:n,message:`카드 번호를 입력해주세요`}},la=e=>{let t=e.findIndex(e=>!e||e.length<2);return t===-1?z:{errorIndex:t,message:`유효기간을 입력해주세요`}},ua=e=>e.length<3?{errorIndex:0,message:`CVC를 입력해주세요`}:z,da=e=>e.length<2?{errorIndex:0,message:`비밀번호를 입력해주세요`}:z,fa=(e,t)=>{let[n,r]=(0,_.useState)(``),[i,a]=(0,_.useState)(-1),o=()=>{r(``),a(-1)},s=t=>{let{errorIndex:n,message:i}=e(t);a(n),r(i)};return{errorMessage:n,errorIndex:i,clearError:o,handleBlur:()=>s(t),validate:s}},pa=({onChange:e,inputValues:t,fieldConfig:n,serverError:r})=>{let{errorMessage:i,errorIndex:a,clearError:o,handleBlur:s,validate:c}=fa(e=>ca(e,n),t),l=i||r,u=!!l,d=!!r,f=(0,_.useRef)([]),p=(0,_.useRef)(!1),m=(r,i)=>{let a=[...t];a[r]=i.replace(/\D/g,``),o(),e(a),i.length===n[r]&&r<n.length-1&&(c(a),p.current=!0,f.current[r+1]?.focus())},h=()=>{if(p.current){p.current=!1;return}s()};return L(sa,{title:`결제할 카드 번호를 입력해 주세요`,message:`본인 명의의 카드만 결제 가능합니다.`,tag:`카드 번호`,errorMessage:l,children:n.map((e,n)=>{let r=u&&(d||a<0||a===n);return L(`input`,{inputMode:`numeric`,ref:e=>{f.current[n]=e},maxLength:e,value:t[n]??``,onChange:e=>m(n,e.target.value),onBlur:h,css:[aa,I`
                 border: 1.01px solid ${r?`#ff3d3d`:`#ACACAC`};
               `],placeholder:`1234`},n)})})},ma=`data:image/svg+xml,%3csvg%20width='9'%20height='6'%20viewBox='0%200%209%206'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M8.30417%204.48424L4.48424%200.664307L0.664307%204.48424'%20stroke='%23ACACAC'%20stroke-width='1.32867'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e`,ha=`data:image/svg+xml,%3csvg%20width='9'%20height='6'%20viewBox='0%200%209%206'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M0.664339%200.664322L4.48427%204.48425L8.3042%200.664323'%20stroke='black'%20stroke-width='1.32867'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e`,ga=({value:e,options:t,placeholder:n=`선택해 주세요`,onChange:r})=>{let[i,a]=(0,_.useState)(!1),o=e=>{r(e),a(!1)};return R(`div`,{css:I`
         position: relative;
@@ -166,7 +166,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
             border: 1.01px solid ${o?`#ff3d3d`:`#ACACAC`};
           `],placeholder:`123`})})},xa=({onChange:e,inputValue:t})=>{let{errorMessage:n,clearError:r,handleBlur:i}=fa(da,t),a=t=>{r(),e(t.replace(/\D/g,``))};return L(sa,{title:`비밀번호를 입력해 주세요`,message:`앞의 2자리를 입력해주세요`,tag:`비밀번호 앞 2자리`,errorMessage:n,children:L(`input`,{type:`password`,inputMode:`numeric`,autoComplete:`new-password`,maxLength:2,value:t,onChange:e=>a(e.target.value),onBlur:i,css:[aa,I`
             border: 1.01px solid ${n?`#ff3d3d`:`#ACACAC`};
-          `]})})},Sa=({children:e,canSubmit:t,onSubmit:n})=>R(Gi,{children:[L(`div`,{css:I`
+          `]})})},Sa=({children:e,canSubmit:t,onSubmit:n,status:r})=>R(Gi,{children:[L(`div`,{css:I`
           width: 100%;
           flex: 1;
           overflow-y: auto;
@@ -177,13 +177,19 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           &::-webkit-scrollbar {
             display: none;
           }
-        `,children:L(`form`,{id:`card-form`,onSubmit:n,children:e})}),t&&L(`button`,{form:`card-form`,css:I`
+        `,children:L(`form`,{id:`card-form`,onSubmit:n,children:e})}),t&&L(`button`,{form:`card-form`,disabled:r===`loading`,css:I`
             width: calc(100% + 60px);
             margin-bottom: -30px;
             background: #333333;
             color: #f3f3f3;
             height: 52px;
-          `,children:`확인`})]}),Ca={visa:[4,4,4,4],master:[4,4,4,4],amex:[4,6,5],diners:[4,6,4],unionpay:[4,4,4,4]},wa=[4,4,4,4],Ta=e=>Ca[e]??wa,Ea=e=>/^4/.test(e)?`visa`:/^5[1-5]/.test(e)?`master`:/^3[47]/.test(e)?`amex`:/^36/.test(e)?`diners`:/^(622(1(2[6-9]|[3-9]\d)|[2-8]\d{2}|9([01]\d|2[0-5]))|62[4-6]|628[2-8])/.test(e)?`unionpay`:``,Da=()=>{let[e,t]=(0,_.useState)({numbers:[``,``,``,``],expiry:[``,``],cvc:``,company:``,password:``}),[n,r]=(0,_.useState)(0),i=Ea(e.numbers.join(``));return{cardInfo:e,step:n,brand:i,fieldConfig:Ta(i),isValid:Object.values({numbers:()=>ca(e.numbers).errorIndex===-1,company:()=>e.company!==``,expiry:()=>la(e.expiry).errorIndex===-1,cvc:()=>e.cvc.length===3,password:()=>e.password.length===2}).every(e=>e()),cardNumberHandler:e=>{let n=Ta(Ea(e.join(``))),i=e;n.length!==e.length&&(i=Array.from({length:n.length},(t,n)=>e[n]??``)),t(e=>({...e,numbers:i})),n.every((e,t)=>i[t]?.length===e)&&ca(i).errorIndex===-1&&r(e=>Math.max(e,1))},companyHandler:e=>{t(t=>({...t,company:e})),r(e=>Math.max(e,2))},expiryHandler:e=>{t(t=>({...t,expiry:e})),e.every(e=>e.length===2)&&la(e).errorIndex===-1&&r(e=>Math.max(e,3))},cvcHandler:e=>{t(t=>({...t,cvc:e})),e.length===3&&r(e=>Math.max(e,4))},passwordHandler:e=>{t(t=>({...t,password:e}))}}},Oa=`/cards`;async function ka(){let e=await fetch(Oa);if(!e.ok)throw Error(`카드 목록 조회 실패`);return e.json()}async function Aa(e){let t=await fetch(Oa,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify(e)});if(!t.ok)throw await t.json();return t.json()}async function ja(e){await fetch(`${Oa}/${e}`,{method:`DELETE`})}var Ma={HOME:`/`,CARDS:`/cards`,ADD:`/add`,COMPLETE:`/complete`},Na={INVALID_CARD_NUMBER:`INVALID_CARD_NUMBER`,INVALID_CVC:`INVALID_CVC`,INVALID_EXPIRATION_DATE:`INVALID_EXPIRATION_DATE`},Pa=()=>{let e=ft(),[t,n]=(0,_.useState)({}),{cardInfo:r,step:i,brand:a,fieldConfig:o,isValid:s,cardNumberHandler:c,companyHandler:l,expiryHandler:u,cvcHandler:d,passwordHandler:f}=Da(),p=Object.keys(t).length>0,m=s&&!p,h=async t=>{if(t.preventDefault(),m)try{await Aa({number:r.numbers.join(` `),expirationDate:r.expiry.join(`/`),cvc:r.cvc,issuerCode:r.company}),e(Ma.COMPLETE,{state:{numbers:r.numbers[0],brand:a}})}catch(e){let{code:t,message:r}=e;n({[t]:r})}},g=e=>{n(t=>{let n={...t};return delete n[e],n})};return R(`div`,{css:I`
+
+            &:disabled {
+              background: #cccccc;
+              color: #888888;
+              cursor: not-allowed;
+            }
+          `,children:`확인`})]}),Ca={visa:[4,4,4,4],master:[4,4,4,4],amex:[4,6,5],diners:[4,6,4],unionpay:[4,4,4,4]},wa=[4,4,4,4],Ta=e=>Ca[e]??wa,Ea=e=>/^4/.test(e)?`visa`:/^5[1-5]/.test(e)?`master`:/^3[47]/.test(e)?`amex`:/^36/.test(e)?`diners`:/^(622(1(2[6-9]|[3-9]\d)|[2-8]\d{2}|9([01]\d|2[0-5]))|62[4-6]|628[2-8])/.test(e)?`unionpay`:``,Da=()=>{let[e,t]=(0,_.useState)({numbers:[``,``,``,``],expiry:[``,``],cvc:``,company:``,password:``}),[n,r]=(0,_.useState)(0),i=Ea(e.numbers.join(``)),a=Ta(i);return{cardInfo:e,step:n,brand:i,fieldConfig:a,isValid:Object.values({numbers:()=>ca(e.numbers,a).errorIndex===-1,company:()=>e.company!==``,expiry:()=>la(e.expiry).errorIndex===-1,cvc:()=>e.cvc.length===3,password:()=>e.password.length===2}).every(e=>e()),cardNumberHandler:e=>{let n=Ta(Ea(e.join(``))),i=e;n.length!==e.length&&(i=Array.from({length:n.length},(t,n)=>e[n]??``)),t(e=>({...e,numbers:i})),n.every((e,t)=>i[t]?.length===e)&&ca(i,n).errorIndex===-1&&r(e=>Math.max(e,1))},companyHandler:e=>{t(t=>({...t,company:e})),r(e=>Math.max(e,2))},expiryHandler:e=>{t(t=>({...t,expiry:e})),e.every(e=>e.length===2)&&la(e).errorIndex===-1&&r(e=>Math.max(e,3))},cvcHandler:e=>{t(t=>({...t,cvc:e})),e.length===3&&r(e=>Math.max(e,4))},passwordHandler:e=>{t(t=>({...t,password:e}))}}},Oa=`/cards`;async function ka(){let e=await fetch(Oa);if(!e.ok)throw Error(`카드 목록 조회 실패`);return e.json()}async function Aa(e){let t=await fetch(Oa,{method:`POST`,headers:{"Content-Type":`application/json`},body:JSON.stringify(e)});if(!t.ok){let e=await t.text();throw e?JSON.parse(e):{code:`UNKNOWN`,message:`알 수 없는 오류가 발생했습니다.`}}}async function ja(e){await fetch(`${Oa}/${e}`,{method:`DELETE`})}var Ma={HOME:`/`,CARDS:`/cards`,ADD:`/add`,COMPLETE:`/complete`},Na={INVALID_CARD_NUMBER:`INVALID_CARD_NUMBER`,INVALID_CVC:`INVALID_CVC`,INVALID_EXPIRATION_DATE:`INVALID_EXPIRATION_DATE`},Pa=()=>{let e=ft(),[t,n]=(0,_.useState)({}),[r,i]=(0,_.useState)(`idle`),{cardInfo:a,step:o,brand:s,fieldConfig:c,isValid:l,cardNumberHandler:u,companyHandler:d,expiryHandler:f,cvcHandler:p,passwordHandler:m}=Da(),h=Object.keys(t).length>0,g=l&&!h,v=async t=>{if(t.preventDefault(),!(!g||r===`loading`)){i(`loading`);try{await Aa({number:a.numbers.join(` `),expirationDate:a.expiry.join(`/`),cvc:a.cvc,issuerCode:a.company}),i(`success`),e(Ma.COMPLETE,{state:{numbers:a.numbers[0],brand:s}})}catch(e){let{code:t,message:r}=e;Object.values(Na).includes(t)?n({[t]:r}):alert(`카드 등록에 실패했습니다. 잠시 후 다시 시도해주세요.`),i(`error`)}}},y=e=>{n(t=>{let n={...t};return delete n[e],n})};return R(`div`,{css:I`
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -192,7 +198,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         align-items: center;
       `,children:[L(`div`,{css:I`
           padding: 45px 0;
-        `,children:L(ia,{cardInfo:r,brand:a})}),R(Sa,{canSubmit:m,onSubmit:h,children:[i>=4&&L(xa,{onChange:f,inputValue:r.password}),i>=3&&L(ba,{onChange:e=>{g(Na.INVALID_CVC),d(e)},serverError:t[Na.INVALID_CVC],inputValue:r.cvc}),i>=2&&L(ya,{serverError:t[Na.INVALID_EXPIRATION_DATE],onChange:e=>{g(Na.INVALID_EXPIRATION_DATE),u(e)},inputValues:r.expiry}),i>=1&&L(va,{onChange:l,inputValue:r.company}),L(pa,{onChange:e=>{g(Na.INVALID_CARD_NUMBER),c(e)},serverError:t[Na.INVALID_CARD_NUMBER],inputValues:r.numbers,fieldConfig:o})]})]})},Fa=({isActivate:e=!0,children:t,...n})=>L(`button`,{...n,css:I`
+        `,children:L(ia,{cardInfo:a,brand:s})}),R(Sa,{canSubmit:g,onSubmit:v,status:r,children:[o>=4&&L(xa,{onChange:m,inputValue:a.password}),o>=3&&L(ba,{onChange:e=>{y(Na.INVALID_CVC),p(e)},serverError:t[Na.INVALID_CVC],inputValue:a.cvc}),o>=2&&L(ya,{serverError:t[Na.INVALID_EXPIRATION_DATE],onChange:e=>{y(Na.INVALID_EXPIRATION_DATE),f(e)},inputValues:a.expiry}),o>=1&&L(va,{onChange:d,inputValue:a.company}),L(pa,{onChange:e=>{y(Na.INVALID_CARD_NUMBER),u(e)},serverError:t[Na.INVALID_CARD_NUMBER],inputValues:a.numbers,fieldConfig:c})]})]})},Fa=({isActivate:e=!0,children:t,...n})=>L(`button`,{...n,css:I`
         width: 100%;
         background: ${e?`#333333`:`#F7F7F7`};
         color: #f3f3f3;
@@ -201,7 +207,6 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         font-size: 15px;
         font-weight: 700;
         cursor: ${e?`pointer`:`default`};
-
         border: ${e?`none`:` 1px dashed #F0F0F0`};
       `,children:t}),Ia=({children:e,...t})=>L(`button`,{...t,css:I`
         width: 100%;
@@ -318,7 +323,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
         background: #f5f5f5;
         border: 1px dashed #d9d9d9;
         border-radius: 5px;
-      `}),Wa=()=>{let e=ft(),[t,n]=(0,_.useState)(`loading`),[r,i]=(0,_.useState)([]);(0,_.useEffect)(()=>{ka().then(e=>{i(e),n(`success`)}).catch(()=>n(`error`))},[]);let a=async e=>{window.confirm(`카드를 삭제하시겠습니까?`)&&(await ja(e),i(t=>t.filter(t=>t.id!==e)))};return R(`div`,{css:I`
+      `}),Wa=()=>{let e=ft(),[t,n]=(0,_.useState)(`loading`),[r,i]=(0,_.useState)([]),a=()=>{ka().then(e=>{i(e),n(`success`)}).catch(()=>n(`error`))};(0,_.useEffect)(()=>{a()},[]);let o=async e=>{window.confirm(`카드를 삭제하시겠습니까?`)&&(await ja(e),i(t=>t.filter(t=>t.id!==e)))};return R(`div`,{css:I`
         width: 100%;
         height: 100%;
         display: flex;
@@ -330,7 +335,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           font-style: Bold;
           font-size: 18px;
           align-self: flex-start;
-        `,children:[`보유 카드 `,r.length!==0&&`(${r.length})`]}),t===`loading`&&L(Ba,{}),t===`error`&&R(Gi,{children:[L(Va,{icon:L(Ha,{}),title:`카드 목록을 불러올 수 없어요`,description:`잠시 후 다시 시도해 주세요.`}),L(Fa,{onClick:()=>e(Ma.ADD),children:`다시 시도`})]}),t===`success`&&r.length===0&&R(Gi,{children:[L(Va,{icon:L(Ua,{}),title:`등록된 카드가 없습니다`,description:`아래 버튼을 눌러 첫 카드를 등록해보세요`}),L(Fa,{onClick:()=>e(Ma.ADD),children:`카드 추가하기`})]}),t===`success`&&r.length>0&&R(`div`,{css:I`
+        `,children:[`보유 카드 `,r.length!==0&&`(${r.length})`]}),t===`loading`&&L(Ba,{}),t===`error`&&R(Gi,{children:[L(Va,{icon:L(Ha,{}),title:`카드 목록을 불러올 수 없어요`,description:`잠시 후 다시 시도해 주세요.`}),L(Fa,{onClick:()=>{n(`loading`),a()},children:`다시 시도`})]}),t===`success`&&r.length===0&&R(Gi,{children:[L(Va,{icon:L(Ua,{}),title:`등록된 카드가 없습니다`,description:`아래 버튼을 눌러 첫 카드를 등록해보세요`}),L(Fa,{onClick:()=>e(Ma.ADD),children:`카드 추가하기`})]}),t===`success`&&r.length>0&&R(`div`,{css:I`
             display: flex;
             flex-direction: column;
             flex: 1;
@@ -349,7 +354,7 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
               }
             `,children:r.map(e=>L(`li`,{css:I`
                   list-style: none;
-                `,children:L(La,{issuerCode:e.issuerCode,number:e.number,expirationDate:e.expirationDate,onDelete:()=>a(e.id)})},e.id))}),L(Ia,{onClick:()=>e(Ma.ADD),children:`+ 카드 추가하기`})]})]})},Ga=`/react-payments/assets/completeCheck-bWFw8pSF.png`,Ka=()=>{let{state:e}=lt(),t=ft(),n=e?.numbers,r=e?.brand;return!n?.length||!r?(alert(`카드 정보를 찾을 수 없습니다. 처음부터 다시 시도해주세요.`),L(zt,{to:Ma.HOME,replace:!0})):R(`div`,{css:I`
+                `,children:L(La,{issuerCode:e.issuerCode,number:e.number,expirationDate:e.expirationDate,onDelete:()=>o(e.id)})},e.id))}),L(Ia,{onClick:()=>e(Ma.ADD),children:`+ 카드 추가하기`})]})]})},Ga=`/react-payments/assets/completeCheck-bWFw8pSF.png`,Ka=()=>{let{state:e}=lt(),t=ft(),n=e?.numbers,r=e?.brand;return!n?.length||!r?(alert(`카드 정보를 찾을 수 없습니다. 처음부터 다시 시도해주세요.`),L(zt,{to:Ma.HOME,replace:!0})):R(`div`,{css:I`
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -364,4 +369,4 @@ Please change the parent <Route path="${e}"> to <Route path="${e===`/`?`*`:`${e}
           font-weight: 700;
           font-size: 25px;
           text-align: center;
-        `,children:[n,`로 시작하는 `,L(`br`,{}),r,` 카드가 등록되었어요.`]}),L(Fa,{onClick:()=>t(Ma.HOME),children:`확인`})]})},qa=()=>L(jn,{basename:`/react-payments/`,children:L(Ut,{children:R(Vt,{element:L(Ki,{}),children:[L(Vt,{index:!0,element:L(zt,{to:Ma.CARDS,replace:!0})}),L(Vt,{path:Ma.CARDS,element:L(Wa,{})}),L(Vt,{path:Ma.ADD,element:L(Pa,{})}),L(Vt,{path:Ma.COMPLETE,element:L(Ka,{})})]})})});async function Ja(){let{worker:e}=await S(async()=>{let{worker:e}=await import(`./browser-C0V6qeQu.js`);return{worker:e}},[]);return e.start({serviceWorker:{url:`/react-payments/mockServiceWorker.js`}})}Ja().then(()=>{(0,v.createRoot)(document.getElementById(`root`)).render(L(_.StrictMode,{children:L(qa,{})}))});export{Ea as n,Ta as r,Na as t};
+        `,children:[n,`로 시작하는 `,L(`br`,{}),r,` 카드가 등록되었어요.`]}),L(Fa,{onClick:()=>t(Ma.HOME),children:`확인`})]})},qa=()=>L(jn,{basename:`/react-payments/`,children:L(Ut,{children:R(Vt,{element:L(Ki,{}),children:[L(Vt,{index:!0,element:L(zt,{to:Ma.CARDS,replace:!0})}),L(Vt,{path:Ma.CARDS,element:L(Wa,{})}),L(Vt,{path:Ma.ADD,element:L(Pa,{})}),L(Vt,{path:Ma.COMPLETE,element:L(Ka,{})})]})})});async function Ja(){let{worker:e}=await S(async()=>{let{worker:e}=await import(`./browser-TeLub_-H.js`);return{worker:e}},[]);return e.start({serviceWorker:{url:`/react-payments/mockServiceWorker.js`}})}Ja().then(()=>{(0,v.createRoot)(document.getElementById(`root`)).render(L(_.StrictMode,{children:L(qa,{})}))});export{Ea as n,Ta as r,Na as t};
